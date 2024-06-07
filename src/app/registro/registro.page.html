@@ -1,0 +1,62 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" id="menu">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="registro-container">
+    <div class="titulo">
+      <h5 class="tituloLogo">Cuponia</h5>
+      <h2 class="subtitulos">Registro</h2>
+    </div>
+    <form [formGroup]="registroForm" (ngSubmit)="onRegister()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellidos</ion-label>
+        <ion-input type="text" formControlName="apellidos"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cédula</ion-label>
+        <ion-input type="text"  formControlName="cedula"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input type="email" formControlName="correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" formControlName="contrasenia"></ion-input>
+      </ion-item>
+      <div id="fechaNacimientoDiv">
+        <label>Fecha de nacimiento:</label>
+      </div>
+      <ion-item>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+      </ion-item>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime 
+            id="datetime" 
+            (ionChange)="onDateChange($event)" 
+            displayFormat="DD-MM-YYYY" 
+            pickerFormat="DD-MM-YYYY"
+            placeholder="Seleccione una fecha"
+            presentation="date"
+            [min]="1940-01-01"
+            [max]="2008-01-01">
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-button shape="round" class="custom-primary" expand="full" type="submit">Registrarse</ion-button>
+      <ion-button shape="round" class="custom-secondary" expand="full" id="btnLogin" routerLink="/inicio-sesion">Iniciar Sesión</ion-button>
+    </form>
+  </div>
+</ion-content>

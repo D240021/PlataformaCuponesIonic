@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" id="menu">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <div id="titulo">
+        <h4>Mis Cupones</h4>
+        <img src="assets/img/logo.png" alt="Logo" class="logo" id="logoNav">
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ng-container *ngFor="let compra of misCuponesService.comprasPorUsuario">
+      <ion-row>
+        <ion-col size="12">
+          <ion-label class="fecha-label">{{compra.fecha}}</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label class="fecha-label">₡{{compra.precioTotal}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-lg="3" *ngFor="let cupon of compra.cupones">
+          <ion-card>
+            <img [src]="cupon.imagen" alt="{{ cupon.nombre }}" />
+            <ion-card-header>
+              <ion-card-title>{{ cupon.nombre }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>Empresa: </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ion-grid>
+</ion-content>

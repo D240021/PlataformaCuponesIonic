@@ -1,0 +1,69 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.logo {
+    width: 250px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.tituloLogo {
+    font-family: "Jaro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.9em;
+    color: #666666;
+}
+
+.subtitulos {
+    font-family: "Jaro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: -20px;
+    color: #666666;
+}
+
+ion-item {
+    width: 350px;
+    height: 50px;
+    border-radius: 250px;
+    margin-bottom: 10px;
+    --ion-background-color: #f0f0f0;
+    color: #868686;
+}
+
+ion-input {
+    --ion-background-color: #f0f0f0;
+    color: #868686;
+}
+
+ion-button {
+    height: 50px;
+    width: 350px;
+    border-radius: 100px;
+    margin-top: 20px;
+
+}
+
+
+ion-button[type="submit"] {
+    --background: #FFD320;
+    
+}
+
+
+#btnRegistro{
+    --background: #FD0046;
+    border: white;
+}

@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    
+    <section id="seccionBotones">
+      <ion-button shape="round" class="custom-secondary" expand="full" id="btnVaciarCarrito" (click)="carrito.vaciarCarrito()">Vaciar carrito</ion-button>
+      <ion-button shape="round" class="custom-secondary" expand="full" id="btnPagar" (click)="carrito.realizarPago()">Pagar</ion-button>
+    </section>
+
+    <section id="seccionTotal">
+      <p> Subtotal: ₡{{carrito.calcularSubtotal()}} </p>
+      <p> Total: ₡{{carrito.calcularTotal()}} </p>
+    </section>
+
+    <ion-buttons slot="start" id="menu">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="3" *ngFor="let cupon of cuponesCarrito">
+        <ion-card>
+          <img [src]="cupon.imagen" alt="{{ cupon.nombreCupon }}" />
+          <ion-card-header>
+            <ion-card-title>{{ cupon.nombreCupon }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>Empresa: {{ cupon.empresa.nombreEmpresa }}</p>
+            <div *ngFor="let promocion of cupon.promociones">
+              <p>Promoción: {{ promocion.descripcion }} </p>
+              <p>Precio con promoción: ₡{{ descuento.aplicarDescuento(cupon.precio, promocion.descuento) }}</p>
+            </div>
+            <p>Precio regular: ₡{{ cupon.precio }}</p>
+            <ion-button shape="round" class="custom-secondary" expand="full" id="btnEliminarCarrito" (click)="eliminarCupon(cupon)">Eliminar del
+              carrito</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

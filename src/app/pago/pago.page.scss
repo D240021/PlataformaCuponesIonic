@@ -1,0 +1,57 @@
+#iconoFlecha{
+   padding-left: 1.5%; 
+   width: 20%;
+   height: 2em;
+   color: #868686;
+   cursor: pointer;
+   padding-top: 1.5%;
+}
+
+#infoTotalPago{
+    text-align: center;
+    color: #868686;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#titulo {
+    text-align: center;
+    font-size: 2em;
+}
+
+#form-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#form-contenedor ion-item {
+    width: 350px;
+    height: 50px;
+    border-radius: 250px;
+    margin-bottom: 10px;
+    --ion-background-color: #f0f0f0;
+    color: #868686;
+    justify-content: center;
+}
+
+#form-contenedor ion-input {
+    --ion-background-color: #f0f0f0;
+    color: #868686;
+}
+
+ion-button {
+    height: 50px;
+    width: 350px;
+    border-radius: 100px;
+    margin-top: 20px;
+}
+
+ion-button[type="submit"] {
+    --background: #03AFFC;
+}
