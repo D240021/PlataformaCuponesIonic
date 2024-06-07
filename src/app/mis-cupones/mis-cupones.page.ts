@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompraService } from '../services/compra/compra.service';
 import { MisCuponesService } from '../services/misCupones/mis-cupones.service';
 import { MenuController } from '@ionic/angular';
+import { AplicarPorcentajesService } from '../services/aplicarPorcentajes/aplicar-porcentajes.service';
 
 @Component({
   selector: 'app-mis-cupones',
@@ -14,7 +15,8 @@ export class MisCuponesPage implements OnInit {
   (
     private compraService : CompraService,
     public misCuponesService : MisCuponesService,
-    private menu: MenuController
+    private menu: MenuController,
+    public descuento: AplicarPorcentajesService
   ) { }
 
   ngOnInit() {

@@ -29,7 +29,7 @@ interface Empresa {
   correo: string,
   teléfono: string,
   imagen: string,
-  isHabilitado: number
+  estado: string
 
 
 }

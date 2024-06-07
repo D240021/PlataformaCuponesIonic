@@ -39,9 +39,8 @@ export class CorreoService {
   darFormatoACuerpo(compra: any): string {
     const numTarjeta = compra.numTarjeta;
     const numTarjetaEnmascarada = numTarjeta.slice(0, -4).replace(/./g, '*') + numTarjeta.slice(-4);
-    console.log(compra);
   
-    let nombreCupones = "";
+    let nombreCupones = "\n";
     compra.cupones.forEach((cupon: any) => {
       nombreCupones += cupon.nombreCupon + "\n";
     });

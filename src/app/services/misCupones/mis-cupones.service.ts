@@ -58,7 +58,8 @@ export class MisCuponesService implements OnInit {
         cuponesPorCompra.forEach(cupon => {
           
           this.cuponService.obtenerCuponPorID(cupon.idRepetible).subscribe(response => {
-            compra.cupones.push(response);
+            
+            compra.cupones.push(response[0]);
           });
 
         });
