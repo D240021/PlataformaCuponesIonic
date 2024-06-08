@@ -62,6 +62,7 @@ export class PagoPage implements OnInit {
           this.router.navigate(['/home']);
           this.alerta.mostrarAlerta("Pago exitoso!", "Su compra ha sido procesada. Recibirá un correo con los detalles");
           this.correo.enviarCorreo(compraACorreo);
+          
         }, error => {
           this.alerta.mostrarAlerta("Error!", error);
         });

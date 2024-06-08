@@ -1,17 +1,14 @@
-<ion-header  class="ion-no-border">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-icon name="arrow-back" id="iconoFlecha" (click)="volverAlCarrito()"></ion-icon>
     <div id="infoTotalPago">
-      <p> Total: ₡{{carrito.calcularTotal()}}</p>
+      <p>Total: ₡{{carrito.calcularTotal()}}</p>
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-
   <section id="infoDePago">
-
     <div id="titulo">
       <p>Información de pago</p>
     </div>
@@ -19,23 +16,21 @@
     <form id="form-contenedor" [formGroup]="pagoForm" (ngSubmit)="onPago()">
       <ion-item>
         <ion-label position="floating">Titular de tarjeta</ion-label>
-        <ion-input type="text" required formControlName="titularTarjeta"></ion-input>
+        <input type="text" required formControlName="titularTarjeta" class="custom-input">
       </ion-item>
       <ion-item>
         <ion-label position="floating">Número de tarjeta</ion-label>
-        <ion-input type="text" required formControlName="numTarjeta"></ion-input>
+        <input type="text" required formControlName="numTarjeta" class="custom-input" mask="0000 0000 0000 0000">
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Fecha de vencimiento </ion-label>
-        <ion-input type="text" required formControlName="fechaVencimiento"></ion-input>
+        <ion-label position="floating">Fecha de vencimiento</ion-label>
+        <input type="text" required formControlName="fechaVencimiento" class="custom-input" mask="00/00">
       </ion-item>
       <ion-item>
         <ion-label position="floating">CVV</ion-label>
-        <ion-input type="password" required maxlength="3" formControlName="cvv"></ion-input>
+        <input type="password" required maxlength="3" formControlName="cvv" class="custom-input">
       </ion-item>
       <ion-button shape="round" class="custom-primary" expand="full" type="submit">Pagar</ion-button>
     </form>
-
   </section>
-
 </ion-content>

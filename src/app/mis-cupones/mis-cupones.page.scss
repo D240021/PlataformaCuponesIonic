@@ -35,12 +35,6 @@ ion-card {
     max-width: 250px;
 }
 
-.fecha-label {
-    font-weight: bold;
-    margin-bottom: 15px;
-    display: block;
-    text-align: left;
-}
 
 #titulo{
     display: flex;
@@ -48,4 +42,15 @@ ion-card {
 
 #titulo h4 {
     padding-top: .95%;
+}
+
+.fechaCompra {
+    font-weight: 200;
+    margin-bottom: 15px;
+    display: block;
+    text-align: left;
+}
+
+.fechaCompra{
+
 }

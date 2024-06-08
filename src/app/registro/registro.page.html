@@ -16,24 +16,25 @@
     </div>
     <form [formGroup]="registroForm" (ngSubmit)="onRegister()">
       <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text" formControlName="nombre"></ion-input>
+        <ion-label position="fixed">Nombre</ion-label>
+        <input type="text" formControlName="nombre" class="styled-input">
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Apellidos</ion-label>
-        <ion-input type="text" formControlName="apellidos"></ion-input>
+        <ion-label position="fixed">Apellidos</ion-label>
+        <input type="text" formControlName="apellidos" class="styled-input">
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Cédula</ion-label>
-        <ion-input type="text"  formControlName="cedula"></ion-input>
+        <ion-label position="fixed">Cédula</ion-label>
+        <input type="text" formControlName="cedula" mask="0-0000-0000
+        " class="styled-input">
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Correo electrónico</ion-label>
-        <ion-input type="email" formControlName="correo"></ion-input>
+        <ion-label position="fixed">Email</ion-label>
+        <input type="email" formControlName="correo" class="styled-input">
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" formControlName="contrasenia"></ion-input>
+        <ion-label position="fixed">Contraseña</ion-label>
+        <input type="password" formControlName="contrasenia" class="styled-input">
       </ion-item>
       <div id="fechaNacimientoDiv">
         <label>Fecha de nacimiento:</label>
@@ -43,20 +44,15 @@
       </ion-item>
       <ion-modal [keepContentsMounted]="true">
         <ng-template>
-          <ion-datetime 
-            id="datetime" 
-            (ionChange)="onDateChange($event)" 
-            displayFormat="DD-MM-YYYY" 
-            pickerFormat="DD-MM-YYYY"
-            placeholder="Seleccione una fecha"
-            presentation="date"
-            [min]="1940-01-01"
+          <ion-datetime id="datetime" (ionChange)="onDateChange($event)" displayFormat="DD-MM-YYYY"
+            pickerFormat="DD-MM-YYYY" placeholder="Seleccione una fecha" presentation="date" [min]="1940-01-01"
             [max]="2008-01-01">
           </ion-datetime>
         </ng-template>
       </ion-modal>
       <ion-button shape="round" class="custom-primary" expand="full" type="submit">Registrarse</ion-button>
-      <ion-button shape="round" class="custom-secondary" expand="full" id="btnLogin" routerLink="/inicio-sesion">Iniciar Sesión</ion-button>
+      <ion-button shape="round" class="custom-secondary" expand="full" id="btnLogin" routerLink="/inicio-sesion">Iniciar
+        Sesión</ion-button>
     </form>
   </div>
 </ion-content>

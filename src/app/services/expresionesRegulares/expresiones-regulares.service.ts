@@ -34,11 +34,20 @@ export class ExpresionesRegularesService {
   }
 
   static fechaExpiracionValida(control: AbstractControl): ValidationErrors | null {
-    const value = control.value;
+    let value = control.value;
+    
     if (!value) {
       return null;
     }
-    const valid = /^\d{2}\/\d{2}$/.test(value);
+    value = value.toString();
+  
+    if (value.length !== 4 || !/^\d{4}$/.test(value)) {
+      return { fechaExpiracionInvalida: true };
+    }
+    const formattedValue = `${value.substring(0, 2)}/${value.substring(2, 4)}`;
+  
+    const valid = /^\d{2}\/\d{2}$/.test(formattedValue);
+    
     return valid ? null : { fechaExpiracionInvalida: true };
   }
 
@@ -52,7 +61,8 @@ export class ExpresionesRegularesService {
   }
 
   static validarTarjeta(control: AbstractControl): ValidationErrors | null {
-    const value = control.value;
+    const value = control.value.replace(/\s+/g, '');
+    
     if (!value) {
       return null;
     }
@@ -68,6 +78,7 @@ export class ExpresionesRegularesService {
     }, 0);
     
     const valid = sum % 10 === 0;
+    console.log(valid ? null : { tarjetaInvalida: true });
     return valid ? null : { tarjetaInvalida: true };
   }
 

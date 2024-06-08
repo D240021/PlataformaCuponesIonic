@@ -8,6 +8,7 @@ import { PagoPageRoutingModule } from './pago-routing.module';
 import { ReactiveFormsModule } from '@angular/forms'; 
 
 import { PagoPage } from './pago.page';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -15,8 +16,11 @@ import { PagoPage } from './pago.page';
     FormsModule,
     IonicModule,
     PagoPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  declarations: [PagoPage]
+  declarations: [PagoPage],
+  providers: [provideNgxMask()]
 })
 export class PagoPageModule {}

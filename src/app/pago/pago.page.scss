@@ -1,13 +1,13 @@
-#iconoFlecha{
-   padding-left: 1.5%; 
-   width: 20%;
-   height: 2em;
-   color: #868686;
-   cursor: pointer;
-   padding-top: 1.5%;
+#iconoFlecha {
+    padding-left: 1.5%;
+    width: 20%;
+    height: 2em;
+    color: #868686;
+    cursor: pointer;
+    padding-top: 1.5%;
 }
 
-#infoTotalPago{
+#infoTotalPago {
     text-align: center;
     color: #868686;
 }
@@ -40,9 +40,26 @@
     justify-content: center;
 }
 
-#form-contenedor ion-input {
-    --ion-background-color: #f0f0f0;
+#form-contenedor ion-label {
     color: #868686;
+    font-size: 0.8em;
+    transform: translateY(-0.55px); /* Ajusta este valor para mover el label hacia arriba */
+}
+
+.custom-input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #f0f0f0;
+    color: #868686;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.custom-input:focus {
+    outline: none;
 }
 
 ion-button {
