@@ -24,7 +24,7 @@ export class ExpresionesRegularesService {
     const hasSpecial = /[!@#$%^&*]/.test(value);
 
     const valid = hasUpperCase && hasLowerCase && hasNumeric && hasSpecial;
-
+    
     if (!valid) {
       return {
         strong: true

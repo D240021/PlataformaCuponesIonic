@@ -5,7 +5,7 @@ import { AlertaService } from '../services/alerta/alerta.service';
 import { UsuarioService } from '../services/usuario/usuario.service';
 import { ExpresionesRegularesService } from '../services/expresionesRegulares/expresiones-regulares.service';
 import { EncriptacionService } from '../services/encriptacionAES/encriptacion.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -20,7 +20,8 @@ export class RegistroPage implements OnInit {
     private fb: FormBuilder,
     private alerta: AlertaService,
     private usuarioService: UsuarioService,
-    private encriptacion : EncriptacionService
+    private encriptacion: EncriptacionService,
+    private router: Router
   ) {
     this.registroForm = this.fb.group({
       id: [0],
@@ -29,7 +30,7 @@ export class RegistroPage implements OnInit {
       apellidos: ['', [Validators.required]],
       fechaNacimiento: ['', [Validators.required]],
       correo: ['', [Validators.required, Validators.email]],
-      contrasenia: ['', [Validators.required, Validators.minLength(8), ExpresionesRegularesService.esFuerte]], // Mover esFuerte al segundo argumento
+      contrasenia: ['', [Validators.required, Validators.minLength(8), ExpresionesRegularesService.esFuerte]]
     });
   }
 
@@ -40,23 +41,28 @@ export class RegistroPage implements OnInit {
   }
 
   onRegister() {
-    const usuario = {
-      id: 0,
-      nombre: this.registroForm.get("nombre")?.value,
-      cedula: this.registroForm.get("cedula")?.value,
-      apellidos: this.registroForm.get("apellidos")?.value,
-      fechaNacimiento: this.registroForm.get("fechaNacimiento")?.value,
-      correo: this.registroForm.get("correo")?.value,
-      contrasenia:  this.encriptacion.encriptarDatos(this.registroForm.get("contrasenia")?.value)
-    };
+  
+    if (this.registroForm.valid) {
 
-    if (usuario) {
-      this.usuarioService.registrarUsuario(usuario).subscribe(response => {
-        this.alerta.mostrarAlerta("Usuario registrado!", "");
-        this.registroForm.reset();
-      }, error => {
-        this.alerta.mostrarAlerta("Error!", error);
-      });
+      const usuario = {
+        id: 0,
+        nombre: this.registroForm.get("nombre")?.value,
+        cedula: this.registroForm.get("cedula")?.value,
+        apellidos: this.registroForm.get("apellidos")?.value,
+        fechaNacimiento: this.registroForm.get("fechaNacimiento")?.value,
+        correo: this.registroForm.get("correo")?.value,
+        contrasenia: this.encriptacion.encriptarDatos(this.registroForm.get("contrasenia")?.value)
+      };
+      if (usuario) {
+        this.usuarioService.registrarUsuario(usuario).subscribe(response => {
+          this.registroForm.reset();
+          this.router.navigate(['/inicio-sesion']);
+          this.alerta.mostrarAlerta("Usuario registrado!", "");
+        }, error => {
+          this.alerta.mostrarAlerta("Error!", error);
+        });
+      }
+
     } else {
       this.alerta.mostrarAlerta("Valores inválidos", "");
     }
@@ -68,4 +74,6 @@ export class RegistroPage implements OnInit {
     const date = event.detail.value;
     this.registroForm.patchValue({ fechaNacimiento: date });
   }
+
+
 }

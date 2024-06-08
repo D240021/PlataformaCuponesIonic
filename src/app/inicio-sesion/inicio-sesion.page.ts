@@ -5,6 +5,7 @@ import { UsuarioService } from '../services/usuario/usuario.service';
 import { LoginService } from '../services/login/login.service';
 import { AlertaService } from '../services/alerta/alerta.service';
 import { Router } from '@angular/router';
+import { ControlPaginasService } from '../services/controlPaginas/control-paginas.service';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -21,7 +22,8 @@ export class InicioSesionPage implements OnInit {
     private usuarioService: UsuarioService,
     private alerta: AlertaService,
     private login: LoginService,
-    private router: Router
+    private router: Router,
+    public controlPaginas : ControlPaginasService
   ) {
     this.loginForm = this.fb.group({
       correo: ['', [Validators.required, Validators.email]],
@@ -31,6 +33,7 @@ export class InicioSesionPage implements OnInit {
 
   ngOnInit() {
     this.obtenerTodosUsuarios();
+    
   }
 
   obtenerTodosUsuarios() {
@@ -42,6 +45,8 @@ export class InicioSesionPage implements OnInit {
   onClick() {
     this.menu.toggle();
   }
+
+  
 
   onLogin() {
     if (this.loginForm.valid) {
